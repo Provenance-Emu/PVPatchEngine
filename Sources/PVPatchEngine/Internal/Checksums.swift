@@ -5,7 +5,7 @@
 //  Streamed CRC32 over file ranges.
 //
 
-import CXdelta3
+internal import CXdelta3
 import Foundation
 
 enum Checksums {
