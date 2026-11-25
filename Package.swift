@@ -80,7 +80,9 @@ let package = Package(
     platforms: [
         .iOS(.v17),
         .tvOS(.v17),
-        .macOS(.v14)
+        .macOS(.v14),
+        // Its own slice in the released XCFramework: a Catalyst app cannot link the macOS one.
+        .macCatalyst(.v17)
     ],
     // Product names are the same in both modes, so consumers never change.
     products: buildFromSource ? [
