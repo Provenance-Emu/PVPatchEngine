@@ -10,7 +10,7 @@
 import Foundation
 
 /// A patch file format the engine can apply.
-public enum PatchFormat: String, CaseIterable, Sendable, Codable {
+@frozen public enum PatchFormat: String, CaseIterable, Sendable, Codable {
     /// International Patching System, 3-byte offsets (images up to 16 MiB).
     case ips
     /// IPS with 4-byte offsets and an "EEOF" terminator.
@@ -55,7 +55,7 @@ public enum PatchFormat: String, CaseIterable, Sendable, Codable {
 }
 
 /// Everything that can go wrong while inspecting or applying a patch.
-public enum PatchError: Error, Sendable {
+@frozen public enum PatchError: Error, Sendable {
     /// The source does not match the checksum recorded in the patch (CRC32, or adler32 for xdelta3).
     case sourceMismatch(expected: UInt32, actual: UInt32)
     /// The source is not the size the patch was made for.
@@ -106,7 +106,7 @@ extension PatchError: LocalizedError {
 }
 
 /// The secondary compressor an xdelta3 patch's data sections are compressed with.
-public enum SecondaryCompression: Sendable, Equatable {
+@frozen public enum SecondaryCompression: Sendable, Equatable {
     case djw
     case lzma
     case fgk
@@ -182,7 +182,7 @@ public struct PatchOptions: Sendable {
 
 /// Progress of a running `PatchEngine.apply`.
 public struct PatchProgress: Sendable, Equatable {
-    public enum Phase: Sendable, Equatable {
+    @frozen public enum Phase: Sendable, Equatable {
         /// Reading the source to check it against the patch.
         case verifying
         /// Writing the patched image.
@@ -195,7 +195,7 @@ public struct PatchProgress: Sendable, Equatable {
 }
 
 /// A checksum that was compared and matched.
-public enum VerifiedChecksum: Sendable, Equatable {
+@frozen public enum VerifiedChecksum: Sendable, Equatable {
     case sourceCRC32(UInt32)
     case targetCRC32(UInt32)
     case patchCRC32(UInt32)

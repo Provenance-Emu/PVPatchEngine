@@ -102,3 +102,17 @@ to stream. The Provenance "ignore checksum" option never reached BPS or UPS; her
 `swift test` runs about 75 tests, including three that patch a sparse 4.5 GB image (about 17 seconds, 4.5 GB
 of scratch disk at a time; skipped when less than 20 GB is free). The xdelta3 fixtures are in
 `Tests/PVPatchEngineTests/Fixtures` with the commands that produced them.
+
+## Prebuilt XCFramework
+
+A version tag resolves to a prebuilt XCFramework: the tag's `Package.swift` is a
+`binaryTarget` pointing at the tag's GitHub Release, so an app that depends on a version
+compiles none of this package. `main` and every other branch build from source.
+
+To build a tagged version from source (to step into it in the debugger, say), set
+`PV_BUILD_FROM_SOURCE=1` in the environment `xcodebuild` or Xcode starts in, then resolve
+packages again.
+
+To release, run **Release XCFramework** from the Actions tab with the new version. Do not
+push version tags by hand: such a tag has no binary and builds from source.
+[How releases work](https://github.com/Provenance-Emu/.github/blob/main/docs/xcframework-releases.md).

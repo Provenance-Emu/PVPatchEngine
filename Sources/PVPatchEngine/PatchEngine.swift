@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PatchEngine {
+@frozen public enum PatchEngine {
     // MARK: - Detection and inspection
 
     /// Identifies a patch by its magic bytes. `.ips32` is told apart from `.ips` by the "IPS32"

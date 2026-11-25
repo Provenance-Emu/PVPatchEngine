@@ -7,7 +7,7 @@
 //  served from a small cache of positioned reads, so no whole-file buffer ever exists.
 //
 
-import CXdelta3
+internal import CXdelta3
 import Foundation
 
 enum XDelta3Applier {
